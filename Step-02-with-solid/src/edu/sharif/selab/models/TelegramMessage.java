@@ -4,16 +4,18 @@ public class TelegramMessage extends Message{
     private String sourceUsername;
     private String targetUsername;
 
-    public String getSourceUsername() {
+    @Override
+    public String getSource() {
         return sourceUsername;
+    }
+
+    @Override
+    public String getTarget() {
+        return targetUsername;
     }
 
     public void setSourceUsername(String sourceUsername) {
         this.sourceUsername = sourceUsername;
-    }
-
-    public String getTargetUsername() {
-        return targetUsername;
     }
 
     public void setTargetUsername(String targetUsername) {

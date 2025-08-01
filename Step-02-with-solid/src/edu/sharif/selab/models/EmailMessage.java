@@ -4,16 +4,18 @@ public class EmailMessage extends Message{
     private String sourceEmailAddress;
     private String targetEmailAddress;
 
-    public String getSourceEmailAddress() {
+    @Override
+    public String getSource() {
         return sourceEmailAddress;
+    }
+
+    @Override
+    public String getTarget() {
+        return targetEmailAddress;
     }
 
     public void setSourceEmailAddress(String sourceEmailAddress) {
         this.sourceEmailAddress = sourceEmailAddress;
-    }
-
-    public String getTargetEmailAddress() {
-        return targetEmailAddress;
     }
 
     public void setTargetEmailAddress(String targetEmailAddress) {

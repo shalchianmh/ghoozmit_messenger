@@ -3,6 +3,7 @@ import edu.sharif.selab.models.Message;
 import edu.sharif.selab.models.SmsMessage;
 import edu.sharif.selab.models.TelegramMessage;
 import edu.sharif.selab.services.*;
+import edu.sharif.selab.services.impl.*;
 
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ public class Main {
     public static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+
         System.out.println("Hello and Welcome to SE Lab Messenger.");
         int userAnswer = 0;
         do {
@@ -71,16 +73,8 @@ public class Main {
                     break;
             }
 
-            if (message instanceof SmsMessage) {
-                SmsMessageService messageService = new SmsMessageServiceImpl();
-                messageService.sendSmsMessage((SmsMessage) message);
-            } else if (message instanceof EmailMessage) {
-                EmailMessageService messageService = new EmailMessageServiceImpl();
-                messageService.sendEmailMessage((EmailMessage) message);
-            } else if (message instanceof TelegramMessage) {
-                TelegramMessageService messageService = new TelegramMessageServiceImpl();
-                messageService.sendTelegramMessage((TelegramMessage) message);
-            }
+            MessageService service = MessageServiceFactory.getService(message);
+            service.sendMessage(message);
 
         } while (true);
     }
